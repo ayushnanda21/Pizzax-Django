@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
 # Create your views here.
@@ -23,3 +23,8 @@ def authenticateadmin(request):
 
 def adminhomepageview(request):
     return render(request,"pizzaapp/adminhomepage.html" )
+
+
+def logoutadmin(request):
+    logout(request)
+    return redirect('adminLoginpage')
