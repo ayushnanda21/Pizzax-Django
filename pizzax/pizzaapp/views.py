@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login
+from django.contrib import messages
 
 # Create your views here.
 
@@ -16,6 +17,7 @@ def authenticateadmin(request):
         return redirect('adminhomepage')
       
     if user is None:
+        messages.add_message(request,messages.ERROR,"Invalid Crediantials")
         return redirect('adminLoginpage')
 
 

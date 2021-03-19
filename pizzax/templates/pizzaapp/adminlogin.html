@@ -18,4 +18,9 @@
 </form>
 
 </div>
+
+{% for message in messages%}
+
+<p style ="text-align: center; font-size: 25px;color: red">{{message}} </p>
+{% endfor %}
 {% endblock content %}
