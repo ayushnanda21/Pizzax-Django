@@ -11,7 +11,7 @@ def authenticateadmin(request):
     password = request.POST['password']
     
     user=   authenticate(username = username, password = password)
-    if user is not None:
+    if user is not None and user.username=="admin":
         login(request,user)
         return redirect('adminhomepage')
       
