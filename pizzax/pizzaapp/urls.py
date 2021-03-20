@@ -8,6 +8,7 @@ urlpatterns = [
     path('adminauthenticate/' ,views.authenticateadmin, name="authenticateadmin"),
     path('adminhomepage/',views.adminhomepageview, name="adminhomepage"),
     path('adminlogout/', views.logoutadmin, name="logoutadmin"),
-    path('addpizza/',views.addpizza , name="addpizza")
+    path('addpizza/',views.addpizza , name="addpizza"),
+    path('deletepizza/<int:pizzapk>/',views.deletepizza, name="deletepizza"),
     
 ]

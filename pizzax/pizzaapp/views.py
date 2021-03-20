@@ -36,3 +36,7 @@ def addpizza(request):
     price= request.POST['price']
     PizzaModel(name= name, price = price).save()    #to add pizza to db
     return redirect('adminhomepage')
+
+def deletepizza(request, pizzapk):
+    PizzaModel.objects.filter(id=pizzapk).delete()
+    return redirect('adminhomepage')

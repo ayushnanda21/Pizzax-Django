@@ -27,12 +27,13 @@
   <tr>
     <th> Pizza Name </th>
     <th> Price </th>
-
+    <th> Delete </th> 
     {% for pizza in pizzas %}
   </tr>
     <tr>  
       <td>{{pizza.name}}</td>
       <td>{{pizza.price}}</td>
+      <td> <a href="/deletepizza/{{pizza.id}}/"class ="btn btn-danger"> Delete </a> </td>
     </tr>
     {% endfor %}
   </table>
