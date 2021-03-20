@@ -7,4 +7,34 @@
     <a href="/adminlogout/" class="btn btn-danger">Logout </a>
   </div>
 </nav>
+
+<!--For adding pizza-->
+<div style="width: 300px;padding: 20px;  margin: 30px auto 70px auto; display: block; ">
+<form method="POST" action="/addpizza/">
+    {% csrf_token %}
+    <input type="text" class="form-control" name="pizza" placeholder="Name">
+     <input type="text" class="form-control" style="margin-top:5px;" name="price" placeholder="Price">
+    <input style="margin:10px auto auto auto;" type="submit" class="btn btn-success" value="Add">
+    
+
+
+</form>
+
+</div>
+
+<div style="margin-top: 20px; margin-left:15px;">
+  <table class="table table-bordered table-sm table-primary container"  style="width : 50%">
+  <tr>
+    <th> Pizza Name </th>
+    <th> Price </th>
+
+    {% for pizza in pizzas %}
+  </tr>
+    <tr>  
+      <td>{{pizza.name}}</td>
+      <td>{{pizza.price}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
 {% endblock content %}
