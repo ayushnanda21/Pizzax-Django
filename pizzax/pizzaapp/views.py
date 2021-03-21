@@ -64,3 +64,30 @@ def signupuser(request):
     CustomerModel(userid =User.objects.all()[int(lastobject)].id, phonenumber =phonenumber).save()
     messages.add_message(request, messages.ERROR, "Account Created Successfully")
     return redirect('homepageview')
+
+#views and login for user
+
+def userloginview(request):
+    return render(request,"pizzaapp/userlogin.html")
+
+def userauthenticate(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    
+    user=   authenticate(username = username, password = password)
+    if user is not None:
+        login(request,user)
+        return redirect('customerpage')
+      
+    if user is None:
+        messages.add_message(request,messages.ERROR,"Invalid Crediantials")
+        return redirect('userloginpage')
+
+def customerwelcomeview(request):
+    username=request.user.username
+    context ={"username" : username}
+    return render(request,"pizzaapp/customerwelcome.html",context)
+
+def userlogout(request):
+    logout(request)
+    return redirect('userloginpage')
