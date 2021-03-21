@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .models import PizzaModel
+from .models import PizzaModel, CustomerModel
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -45,3 +46,21 @@ def deletepizza(request, pizzapk):
 
 def homepageview(request):
     return render(request,"pizzaapp/homepage.html")
+
+def signupuser(request):
+    username = request.POST['username']
+    password= request.POST['password']
+    phonenumber=request.POST['phonenumber']
+
+    #if username already exists
+    if User.objects.filter(username =username).exists():
+        messages.add_message(request, messages.ERROR, "Username already exists")
+        return redirect('homepageview')
+
+    #if username does'nt exist (everything is fine)
+    
+    User.objects.create_user(username =username, password =password).save()
+    lastobject = len(User.objects.all()) - 1
+    CustomerModel(userid =User.objects.all()[int(lastobject)].id, phonenumber =phonenumber).save()
+    messages.add_message(request, messages.ERROR, "Account Created Successfully")
+    return redirect('homepageview')

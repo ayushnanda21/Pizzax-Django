@@ -11,5 +11,6 @@ urlpatterns = [
     path('addpizza/',views.addpizza , name="addpizza"),
     path('deletepizza/<int:pizzapk>/',views.deletepizza, name="deletepizza"),
     path("", views.homepageview, name="homepageview"),
+    path("signupuser/", views.signupuser ,name="signupuser"),
     
 ]

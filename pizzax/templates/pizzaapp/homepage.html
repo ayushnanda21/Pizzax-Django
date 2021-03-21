@@ -1,18 +1,23 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
 <nav class="navbar navbar-light bg-primary">
-  <div class="container-fluid">
+ <div class="container-fluid">
     <a class="navbar-brand">PIZZAx</a>
     <a href="#" class="btn btn-danger">Login </a>
   </div>
 </nav>
 
-<div class="container-fluid"style="position: relative;">
+{% for message in messages %}
+<p style="text-align: center">{{message}} </p>
+{% endfor %}
+
+<div class="container-fluid"style="position: relative; height: 400px ; background-size: cover; background-image:url('{% static "img/2.jpeg" %}');">
     <div style="position: absolute; top:50px; right: 20px; padding: 40px; width: 500px; height: 350px; background-color: orange" class="container">
         <h1 style="text-align: center ; color: white;">Sign Up </h1>
-        <form>
+        <form method="POST" action="/signupuser/">
+        {% csrf_token %}
             <input placeholder="Username" type="text" class="form-control" style="margin-bottom: 10px;" name="username">
             <input placeholder="Password" type="Password" class="form-control" style="margin-bottom: 10px;" name="password">
             <input placeholder="Phone number" type="text" class="form-control" style="margin-bottom: 10px;" name="phonenumber">
