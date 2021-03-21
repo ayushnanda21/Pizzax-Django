@@ -1,8 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Welcome {{username}}</a>
+    <a href="/userlogout/" class="btn btn-danger">Logout </a>
+  </div>
+</nav>
 
-<p> Welcome {{username}}</p>
 
-<a href="/userlogout/" class="btn btn-danger"> Logout </a>
+<div style="margin-top: 20px; margin-left:15px;">
+  <table class="table table-bordered table-sm table-primary container"  style="width : 50%">
+  <tr>
+    <th> Pizza Name </th>
+    <th> Price </th> 
+    {% for pizza in pizzas %}
+  </tr>
+    <tr>  
+      <td>{{pizza.name}}</td>
+      <td>{{pizza.price}}</td>
+      <td><input type="number" style="width:60px; " name="quantity"
+      
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+<input type="text" placeholder="Enter your address" style="width: 800px ; margin-top: 50px; margin-left: 300px;" name="">
 
+
+<a href="#" style="margin-top: 15px; margin-left:900px;" class="btn btn-outline-success">Place Order </a>
 {% endblock content %}

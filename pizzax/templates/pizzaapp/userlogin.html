@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1> Login </h1>
+
+<div class="container" style="width: 400px; height: 250px; background-color:orange">
+<h1 style="color: white; text-align:center;" > Login </h1>
 <form method="POST" action="/customer/authenticate/">
 {% csrf_token %}
-<input type="text" name="username" placeholder ="username">
-<input type="password" name="password" placeholder="Password">
-<input type="submit" value="Log in" class="btn btn-danger" name="">
+<input type="text" class="form-control" style="margin-bottom: 3px;" name="username" placeholder ="username">
+<input type="password" class="form-control" name="password" placeholder="Password">
+<input type="submit" value="Log in" style="display:block; margin:5px auto auto auto;" class="btn btn-danger" name="">
 </form>
+
 
 
 {% for message in messages%}
@@ -15,5 +18,8 @@
 <p style="text-align: center"> {{message}} </p>
 
 {% endfor %}
+
+</div>
+
 
 {% endblock content %}

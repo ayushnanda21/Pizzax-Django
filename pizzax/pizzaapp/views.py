@@ -85,7 +85,7 @@ def userauthenticate(request):
 
 def customerwelcomeview(request):
     username=request.user.username
-    context ={"username" : username}
+    context ={"username" : username, "pizzas": PizzaModel.objects.all()}
     return render(request,"pizzaapp/customerwelcome.html",context)
 
 def userlogout(request):
