@@ -17,5 +17,8 @@ urlpatterns = [
     path("customer/authenticate/" ,views.userauthenticate   ,name="userauthenticate"),
     path("userlogout/" ,views.userlogout ,name="userlogout"),
     path("placeorder/", views.placeorder, name="placeorder"),
-    path("userorders/", views.userorders, name="userorders")    
+    path("userorders/", views.userorders, name="userorders"),
+    path("adminorders/", views.adminorders, name="adminorders"),
+    path("acceptorder/<int:orderpk>/", views.acceptorder,name="acceptorder"),
+    path("declineorder/<int:orderpk>/", views.declineorder,name="declineorder"),    
 ]

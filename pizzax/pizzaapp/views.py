@@ -127,3 +127,21 @@ def userorders(request):
     orders= OrderModel.objects.filter(username =request.user.username)
     context ={"orders":orders}
     return render(request,"pizzaapp/userorders.html",context)
+
+# orders display to admin:
+def adminorders(request):
+    orders= OrderModel.objects.all()
+    context ={"orders":orders}
+    return render(request,"pizzaapp/adminorders.html",context)
+
+def acceptorder(request, orderpk):
+    order = OrderModel.objects.filter(id=orderpk)[0]
+    order.status ="Accepted"
+    order.save()
+    return redirect(request.META['HTTP_REFERER'])
+
+def declineorder(request, orderpk):
+    order = OrderModel.objects.filter(id=orderpk)[0]
+    order.status ="Declined"
+    order.save()
+    return redirect(request.META['HTTP_REFERER'])
