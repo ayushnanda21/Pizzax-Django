@@ -17,5 +17,5 @@ urlpatterns = [
     path("customer/authenticate/" ,views.userauthenticate   ,name="userauthenticate"),
     path("userlogout/" ,views.userlogout ,name="userlogout"),
     path("placeorder/", views.placeorder, name="placeorder"),
-    
+    path("userorders/", views.userorders, name="userorders")    
 ]

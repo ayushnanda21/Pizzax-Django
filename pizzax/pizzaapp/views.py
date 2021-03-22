@@ -112,7 +112,7 @@ def placeorder(request):
         price= pizza.price
         quantity= request.POST.get(str(pizzaid), " ")
         if str(quantity)!="0" and str(quantity)!=" ":
-            ordereditems =ordereditems + name +" "+ price + " " + "quantity:" + quantity +" "
+            ordereditems =ordereditems + name +" "+ str(int(price)*int(quantity)) + " " + "quantity:" + quantity +" "
      
 
     
@@ -121,3 +121,9 @@ def placeorder(request):
     messages.add_message(request,messages.ERROR,"Order Placed Successfully")
     
     return redirect('customerpage')
+
+
+def userorders(request):
+    orders= OrderModel.objects.filter(username =request.user.username)
+    context ={"orders":orders}
+    return render(request,"pizzaapp/userorders.html",context)

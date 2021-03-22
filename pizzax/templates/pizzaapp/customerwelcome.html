@@ -3,6 +3,7 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand">Welcome {{username}}</a>
+    <a class="navbar-item" href="/userorders/" style="text-decoration: none ; color: black; " > My Orders </a>
     <a href="/userlogout/" class="btn btn-danger">Logout </a>
   </div>
 </nav>
@@ -23,13 +24,13 @@
     <tr>  
       <td>{{pizza.name}}</td>
       <td>{{pizza.price}}</td>
-      <td><input type="number" style="width:60px; " name="{{pizza.id}}"
+      <td><input type="number" style="width:60px; " value="0"  min ="0" name="{{pizza.id}}"
       
     </tr>
     {% endfor %}
   </table>
 </div>
-<input type="text" placeholder="Enter your address" style="width: 800px ; margin-top: 50px; margin-left: 300px;" name="address">
+<input type="text" placeholder="Enter your address"  style="width: 800px ; margin-top: 50px; margin-left: 300px;" name="address">
 <input type="submit" value="Place Order"  style="margin-top: 15px; margin-left:900px;" class="btn btn-outline-success">
 
 </form>

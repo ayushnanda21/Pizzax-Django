@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 style="text-align: center">My Orders </h1>
+
+{% for order in orders%}
+
+<div class="alert alert-warning" style="margin: 40px;" role="alert">
+    
+
+<p> {{order.username}}</p>
+<p> {{order.phonenumber}}</p>
+<p> {{order.address}}</p>
+<p> {{order.ordereditems}}</p>
+<p> Order Status : {{order.status}}</p>
+
+
+</div>
+
+{% endfor %}
+{% endblock %}
