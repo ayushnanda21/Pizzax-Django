@@ -84,6 +84,10 @@ def userauthenticate(request):
         return redirect('userloginpage')
 
 def customerwelcomeview(request):
+
+    if not request.user.is_authenticated:
+        return redirect('userloginpage')
+
     username=request.user.username
     context ={"username" : username, "pizzas": PizzaModel.objects.all()}
     return render(request,"pizzaapp/customerwelcome.html",context)
@@ -95,6 +99,8 @@ def userlogout(request):
 # for placing order (create Ordermodel)
 
 def placeorder(request):
+    if not request.user.is_authenticated:
+        return redirect('userloginpage')
     username= request.user.username
     phonenumber = CustomerModel.objects.filter(userid= request.user.id)[0].phonenumber
     address = request.POST['address']
