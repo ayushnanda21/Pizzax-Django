@@ -7,7 +7,12 @@
   </div>
 </nav>
 
+{% for message in messages%}
+<p style="color: green ; text-align: center">{{message}} </p>
+{% endfor %}
 
+<form method="POST" action="/placeorder/">
+{% csrf_token %}
 <div style="margin-top: 20px; margin-left:15px;">
   <table class="table table-bordered table-sm table-primary container"  style="width : 50%">
   <tr>
@@ -18,14 +23,15 @@
     <tr>  
       <td>{{pizza.name}}</td>
       <td>{{pizza.price}}</td>
-      <td><input type="number" style="width:60px; " name="quantity"
+      <td><input type="number" style="width:60px; " name="{{pizza.id}}"
       
     </tr>
     {% endfor %}
   </table>
 </div>
-<input type="text" placeholder="Enter your address" style="width: 800px ; margin-top: 50px; margin-left: 300px;" name="">
+<input type="text" placeholder="Enter your address" style="width: 800px ; margin-top: 50px; margin-left: 300px;" name="address">
+<input type="submit" value="Place Order"  style="margin-top: 15px; margin-left:900px;" class="btn btn-outline-success">
 
+</form>
 
-<a href="#" style="margin-top: 15px; margin-left:900px;" class="btn btn-outline-success">Place Order </a>
 {% endblock content %}

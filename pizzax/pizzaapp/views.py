@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .models import PizzaModel, CustomerModel
+from .models import PizzaModel, CustomerModel ,OrderModel
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -91,3 +91,27 @@ def customerwelcomeview(request):
 def userlogout(request):
     logout(request)
     return redirect('userloginpage')
+
+# for placing order (create Ordermodel)
+
+def placeorder(request):
+    username= request.user.username
+    phonenumber = CustomerModel.objects.filter(userid= request.user.id)[0].phonenumber
+    address = request.POST['address']
+    ordereditems =""
+
+    for pizza in PizzaModel.objects.all():
+        pizzaid = pizza.id
+        name= pizza.name
+        price= pizza.price
+        quantity= request.POST.get(str(pizzaid), " ")
+        if str(quantity)!="0" and str(quantity)!=" ":
+            ordereditems =ordereditems + name +" "+ price + " " + "quantity:" + quantity +" "
+     
+
+    
+    
+    OrderModel(username = username , phonenumber =phonenumber, address =address ,ordereditems=ordereditems).save()
+    messages.add_message(request,messages.ERROR,"Order Placed Successfully")
+    
+    return redirect('customerpage')

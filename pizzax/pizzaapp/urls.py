@@ -16,5 +16,6 @@ urlpatterns = [
     path("customer/welcome", views.customerwelcomeview ,name="customerpage"),
     path("customer/authenticate/" ,views.userauthenticate   ,name="userauthenticate"),
     path("userlogout/" ,views.userlogout ,name="userlogout"),
+    path("placeorder/", views.placeorder, name="placeorder"),
     
 ]
